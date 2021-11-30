@@ -7,18 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF772CFF2755ECA000DC7BE7 /* GlobalQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772CFE2755ECA000DC7BE7 /* GlobalQuote.swift */; };
+		DF772D012755EFEA00DC7BE7 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D002755EFEA00DC7BE7 /* Quote.swift */; };
+		DF772D042755F1B500DC7BE7 /* StocksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D032755F1B500DC7BE7 /* StocksAPI.swift */; };
+		DF772D062756012E00DC7BE7 /* QuoteManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D052756012E00DC7BE7 /* QuoteManagerProtocol.swift */; };
+		DF772D082756050C00DC7BE7 /* MockQuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D072756050C00DC7BE7 /* MockQuoteManager.swift */; };
+		DF772D0A275605C500DC7BE7 /* StockQuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D09275605C500DC7BE7 /* StockQuoteManager.swift */; };
 		DFD994E52755C2B50004425A /* StocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994E42755C2B50004425A /* StocksApp.swift */; };
 		DFD994E72755C2B50004425A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994E62755C2B50004425A /* ContentView.swift */; };
 		DFD994E92755C2B70004425A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD994E82755C2B70004425A /* Assets.xcassets */; };
 		DFD994EC2755C2B70004425A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD994EB2755C2B70004425A /* Preview Assets.xcassets */; };
+		DFD994FC2755CD820004425A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994FB2755CD820004425A /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF772CFE2755ECA000DC7BE7 /* GlobalQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalQuote.swift; sourceTree = "<group>"; };
+		DF772D002755EFEA00DC7BE7 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		DF772D032755F1B500DC7BE7 /* StocksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksAPI.swift; sourceTree = "<group>"; };
+		DF772D052756012E00DC7BE7 /* QuoteManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManagerProtocol.swift; sourceTree = "<group>"; };
+		DF772D072756050C00DC7BE7 /* MockQuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteManager.swift; sourceTree = "<group>"; };
+		DF772D09275605C500DC7BE7 /* StockQuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockQuoteManager.swift; sourceTree = "<group>"; };
 		DFD994E12755C2B50004425A /* Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD994E42755C2B50004425A /* StocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksApp.swift; sourceTree = "<group>"; };
 		DFD994E62755C2B50004425A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DFD994E82755C2B70004425A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFD994EB2755C2B70004425A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DFD994FB2755CD820004425A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +46,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF772D022755F13C00DC7BE7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DF772D032755F1B500DC7BE7 /* StocksAPI.swift */,
+				DF772D052756012E00DC7BE7 /* QuoteManagerProtocol.swift */,
+				DF772D072756050C00DC7BE7 /* MockQuoteManager.swift */,
+				DF772D09275605C500DC7BE7 /* StockQuoteManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		DFD994D82755C2B50004425A = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +76,8 @@
 		DFD994E32755C2B50004425A /* Stocks */ = {
 			isa = PBXGroup;
 			children = (
+				DFD994FA2755CCA30004425A /* Utils */,
+				DFD994F22755C7630004425A /* Features */,
 				DFD994E42755C2B50004425A /* StocksApp.swift */,
 				DFD994E62755C2B50004425A /* ContentView.swift */,
 				DFD994E82755C2B70004425A /* Assets.xcassets */,
@@ -65,6 +92,80 @@
 				DFD994EB2755C2B70004425A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DFD994F22755C7630004425A /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				DFD994F32755C77E0004425A /* News */,
+				DFD994F42755C78B0004425A /* Search */,
+				DFD994F52755C7950004425A /* Quotes */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		DFD994F32755C77E0004425A /* News */ = {
+			isa = PBXGroup;
+			children = (
+				DFD994F92755C7D10004425A /* Models */,
+				DFD994F82755C7CB0004425A /* Views */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		DFD994F42755C78B0004425A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		DFD994F52755C7950004425A /* Quotes */ = {
+			isa = PBXGroup;
+			children = (
+				DF772D022755F13C00DC7BE7 /* Managers */,
+				DFD994F72755C7B90004425A /* Models */,
+				DFD994F62755C7B00004425A /* Views */,
+			);
+			path = Quotes;
+			sourceTree = "<group>";
+		};
+		DFD994F62755C7B00004425A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DFD994F72755C7B90004425A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DF772CFE2755ECA000DC7BE7 /* GlobalQuote.swift */,
+				DF772D002755EFEA00DC7BE7 /* Quote.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DFD994F82755C7CB0004425A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DFD994F92755C7D10004425A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DFD994FA2755CCA30004425A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DFD994FB2755CD820004425A /* NetworkManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +238,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFD994FC2755CD820004425A /* NetworkManager.swift in Sources */,
+				DF772D042755F1B500DC7BE7 /* StocksAPI.swift in Sources */,
 				DFD994E72755C2B50004425A /* ContentView.swift in Sources */,
 				DFD994E52755C2B50004425A /* StocksApp.swift in Sources */,
+				DF772D082756050C00DC7BE7 /* MockQuoteManager.swift in Sources */,
+				DF772D0A275605C500DC7BE7 /* StockQuoteManager.swift in Sources */,
+				DF772D012755EFEA00DC7BE7 /* Quote.swift in Sources */,
+				DF772CFF2755ECA000DC7BE7 /* GlobalQuote.swift in Sources */,
+				DF772D062756012E00DC7BE7 /* QuoteManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stocks/Preview Content\"";
+				DEVELOPMENT_TEAM = 2YLSWVDF7V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -297,6 +406,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stocks/Preview Content\"";
+				DEVELOPMENT_TEAM = 2YLSWVDF7V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
