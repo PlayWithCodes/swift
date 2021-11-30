@@ -13,6 +13,9 @@
 		DF772D062756012E00DC7BE7 /* QuoteManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D052756012E00DC7BE7 /* QuoteManagerProtocol.swift */; };
 		DF772D082756050C00DC7BE7 /* MockQuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D072756050C00DC7BE7 /* MockQuoteManager.swift */; };
 		DF772D0A275605C500DC7BE7 /* StockQuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D09275605C500DC7BE7 /* StockQuoteManager.swift */; };
+		DF772D0D2756196C00DC7BE7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D0C2756196C00DC7BE7 /* HeaderView.swift */; };
+		DF772D0F27561F6800DC7BE7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D0E27561F6800DC7BE7 /* CustomTextField.swift */; };
+		DF772D11275621E600DC7BE7 /* SearchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D10275621E600DC7BE7 /* SearchTextView.swift */; };
 		DFD994E52755C2B50004425A /* StocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994E42755C2B50004425A /* StocksApp.swift */; };
 		DFD994E72755C2B50004425A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994E62755C2B50004425A /* ContentView.swift */; };
 		DFD994E92755C2B70004425A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD994E82755C2B70004425A /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 		DF772D052756012E00DC7BE7 /* QuoteManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteManagerProtocol.swift; sourceTree = "<group>"; };
 		DF772D072756050C00DC7BE7 /* MockQuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuoteManager.swift; sourceTree = "<group>"; };
 		DF772D09275605C500DC7BE7 /* StockQuoteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockQuoteManager.swift; sourceTree = "<group>"; };
+		DF772D0C2756196C00DC7BE7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		DF772D0E27561F6800DC7BE7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		DF772D10275621E600DC7BE7 /* SearchTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextView.swift; sourceTree = "<group>"; };
 		DFD994E12755C2B50004425A /* Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD994E42755C2B50004425A /* StocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksApp.swift; sourceTree = "<group>"; };
 		DFD994E62755C2B50004425A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +61,15 @@
 				DF772D09275605C500DC7BE7 /* StockQuoteManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		DF772D0B2756193C00DC7BE7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DF772D0C2756196C00DC7BE7 /* HeaderView.swift */,
+				DF772D10275621E600DC7BE7 /* SearchTextView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		DFD994D82755C2B50004425A = {
@@ -133,6 +148,7 @@
 		DFD994F62755C7B00004425A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF772D0B2756193C00DC7BE7 /* Home */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				DFD994FB2755CD820004425A /* NetworkManager.swift */,
+				DF772D0E27561F6800DC7BE7 /* CustomTextField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -239,10 +256,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD994FC2755CD820004425A /* NetworkManager.swift in Sources */,
+				DF772D11275621E600DC7BE7 /* SearchTextView.swift in Sources */,
+				DF772D0F27561F6800DC7BE7 /* CustomTextField.swift in Sources */,
 				DF772D042755F1B500DC7BE7 /* StocksAPI.swift in Sources */,
 				DFD994E72755C2B50004425A /* ContentView.swift in Sources */,
 				DFD994E52755C2B50004425A /* StocksApp.swift in Sources */,
 				DF772D082756050C00DC7BE7 /* MockQuoteManager.swift in Sources */,
+				DF772D0D2756196C00DC7BE7 /* HeaderView.swift in Sources */,
 				DF772D0A275605C500DC7BE7 /* StockQuoteManager.swift in Sources */,
 				DF772D012755EFEA00DC7BE7 /* Quote.swift in Sources */,
 				DF772CFF2755ECA000DC7BE7 /* GlobalQuote.swift in Sources */,
