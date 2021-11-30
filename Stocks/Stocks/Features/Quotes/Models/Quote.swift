@@ -19,3 +19,9 @@ struct Quote: Codable {
         case changePercent = "10. change percent"
     }
 }
+
+extension Quote: Identifiable {
+    var id: UUID {
+        return UUID()
+    }
+}

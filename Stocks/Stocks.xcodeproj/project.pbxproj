@@ -17,6 +17,7 @@
 		DF772D0F27561F6800DC7BE7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D0E27561F6800DC7BE7 /* CustomTextField.swift */; };
 		DF772D11275621E600DC7BE7 /* SearchTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D10275621E600DC7BE7 /* SearchTextView.swift */; };
 		DF772D1327564D9800DC7BE7 /* QuoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D1227564D9800DC7BE7 /* QuoteCell.swift */; };
+		DF772D152756500F00DC7BE7 /* MiniQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF772D142756500F00DC7BE7 /* MiniQuoteView.swift */; };
 		DFD994E52755C2B50004425A /* StocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994E42755C2B50004425A /* StocksApp.swift */; };
 		DFD994E72755C2B50004425A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994E62755C2B50004425A /* ContentView.swift */; };
 		DFD994E92755C2B70004425A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD994E82755C2B70004425A /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		DF772D0E27561F6800DC7BE7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DF772D10275621E600DC7BE7 /* SearchTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextView.swift; sourceTree = "<group>"; };
 		DF772D1227564D9800DC7BE7 /* QuoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCell.swift; sourceTree = "<group>"; };
+		DF772D142756500F00DC7BE7 /* MiniQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniQuoteView.swift; sourceTree = "<group>"; };
 		DFD994E12755C2B50004425A /* Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD994E42755C2B50004425A /* StocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksApp.swift; sourceTree = "<group>"; };
 		DFD994E62755C2B50004425A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				DF772D0C2756196C00DC7BE7 /* HeaderView.swift */,
 				DF772D10275621E600DC7BE7 /* SearchTextView.swift */,
 				DF772D1227564D9800DC7BE7 /* QuoteCell.swift */,
+				DF772D142756500F00DC7BE7 /* MiniQuoteView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF772D152756500F00DC7BE7 /* MiniQuoteView.swift in Sources */,
 				DFD994FC2755CD820004425A /* NetworkManager.swift in Sources */,
 				DF772D11275621E600DC7BE7 /* SearchTextView.swift in Sources */,
 				DF772D0F27561F6800DC7BE7 /* CustomTextField.swift in Sources */,
