@@ -1,10 +1,3 @@
-//
-//  NetworkManager.swift
-//  Stocks
-//
-//  Created by grade8 on 2021/11/30.
-//
-
 import Foundation
 
 final class NetworkManager<T: Codable> {
