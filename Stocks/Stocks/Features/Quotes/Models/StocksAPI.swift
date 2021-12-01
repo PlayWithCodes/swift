@@ -17,9 +17,9 @@ struct StocksAPI {
     private static func urlBy(symbol: SymbolFunction, searchKey: String) -> String {
         switch symbol {
         case .search:
-            return "\(baseURL)function=\(symbol.rawValue)&apiKey=\(key)&keywords\(searchKey)"
+            return "\(baseURL)function=\(symbol.rawValue)&apikey=\(key)&keywords=\(searchKey)"
         case .quote:
-            return "\(baseURL)function=\(symbol.rawValue)&apiKey=\(key)&symbol\(searchKey)"
+            return "\(baseURL)function=\(symbol.rawValue)&apiKey=\(key)&symbol=\(searchKey)"
         }
     }
     
@@ -31,6 +31,6 @@ struct StocksAPI {
 
 extension StocksAPI {
     static var key: String {
-        return ""
+        return "VU1ZZCJ4POZ4RQ60"
     }
 }

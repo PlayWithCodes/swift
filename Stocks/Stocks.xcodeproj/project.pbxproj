@@ -34,6 +34,9 @@
 		DFC6D2AC2757472100F38B98 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC6D2AB2757472100F38B98 /* SearchResponse.swift */; };
 		DFC6D2AE2757477300F38B98 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC6D2AD2757477300F38B98 /* Search.swift */; };
 		DFC6D2B02757496E00F38B98 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC6D2AF2757496E00F38B98 /* SearchManager.swift */; };
+		DFC6D2B227574E7000F38B98 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC6D2B127574E7000F38B98 /* UserDefaultsManager.swift */; };
+		DFC6D2B427574F9900F38B98 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC6D2B327574F9900F38B98 /* Array+Extensions.swift */; };
+		DFC6D2B62757508B00F38B98 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC6D2B52757508B00F38B98 /* SearchView.swift */; };
 		DFD994E52755C2B50004425A /* StocksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994E42755C2B50004425A /* StocksApp.swift */; };
 		DFD994E72755C2B50004425A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD994E62755C2B50004425A /* ContentView.swift */; };
 		DFD994E92755C2B70004425A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD994E82755C2B70004425A /* Assets.xcassets */; };
@@ -68,6 +71,9 @@
 		DFC6D2AB2757472100F38B98 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		DFC6D2AD2757477300F38B98 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		DFC6D2AF2757496E00F38B98 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		DFC6D2B127574E7000F38B98 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		DFC6D2B327574F9900F38B98 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		DFC6D2B52757508B00F38B98 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		DFD994E12755C2B50004425A /* Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD994E42755C2B50004425A /* StocksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksApp.swift; sourceTree = "<group>"; };
 		DFD994E62755C2B50004425A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 		DFC6D2AA2757470C00F38B98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DFC6D2B52757508B00F38B98 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,6 +265,8 @@
 				DFC6D2A027571AC900F38B98 /* AsyncImage */,
 				DFD994FB2755CD820004425A /* NetworkManager.swift */,
 				DF772D0E27561F6800DC7BE7 /* CustomTextField.swift */,
+				DFC6D2B127574E7000F38B98 /* UserDefaultsManager.swift */,
+				DFC6D2B327574F9900F38B98 /* Array+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 				DF772D1327564D9800DC7BE7 /* QuoteCell.swift in Sources */,
 				DFC6D2982757050D00F38B98 /* NewsSheetView.swift in Sources */,
 				DFC6D2AC2757472100F38B98 /* SearchResponse.swift in Sources */,
+				DFC6D2B427574F9900F38B98 /* Array+Extensions.swift in Sources */,
 				DFC6D2A627571B1F00F38B98 /* ImageCacheKey.swift in Sources */,
 				DF772D042755F1B500DC7BE7 /* StocksAPI.swift in Sources */,
 				DF772D1B2756D95200DC7BE7 /* NewsAPI.swift in Sources */,
@@ -364,6 +374,8 @@
 				DF772D0A275605C500DC7BE7 /* StockQuoteManager.swift in Sources */,
 				DF772D172756D4FA00DC7BE7 /* NewsResponse.swift in Sources */,
 				DF772D012755EFEA00DC7BE7 /* Quote.swift in Sources */,
+				DFC6D2B227574E7000F38B98 /* UserDefaultsManager.swift in Sources */,
+				DFC6D2B62757508B00F38B98 /* SearchView.swift in Sources */,
 				DF772CFF2755ECA000DC7BE7 /* GlobalQuote.swift in Sources */,
 				DFC6D2A827571B2C00F38B98 /* AsyncImage.swift in Sources */,
 				DF772D062756012E00DC7BE7 /* QuoteManagerProtocol.swift in Sources */,
