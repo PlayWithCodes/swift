@@ -2,10 +2,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var stockManager = MockQuoteManager()
+    @ObservedObject var stockManager = StockQuoteManager()
     @ObservedObject var newsManager = NewsDownloadManager()
     
-    @State private var stocks = ["AAPL", "GOOG"]
+    @State private var stocks = UserDefaultsManager.shared.savedSymbols
     @State private var searchTerm = ""
     @State private var newsOpen = false
     @State private var oldStocks = [String]()
@@ -42,8 +42,8 @@ struct ContentView: View {
                     Group {
                         SearchTextView(searchTerm: $searchTerm)
                         
-                        ForEach(getQuotes()) {
-                            quote in QuoteCell(quote: quote)
+                        ForEach(getQuotes()) { quote in
+                            QuoteCell(quote: quote)
                         }
                     }.listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
@@ -51,7 +51,8 @@ struct ContentView: View {
                     fetchData(for: stocks)
                     oldStocks = stocks
                 }.onChange(of: stocks, perform: { value in
-                    
+                    fetchData(for: stocks.difference(from: oldStocks))
+                    oldStocks = stocks
                 })
                     .listStyle(PlainListStyle())
                     .foregroundColor(.white)
@@ -76,6 +77,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().previewInterfaceOrientation(.portraitUpsideDown)
     }
 }

@@ -19,7 +19,7 @@ struct StocksAPI {
         case .search:
             return "\(baseURL)function=\(symbol.rawValue)&apikey=\(key)&keywords=\(searchKey)"
         case .quote:
-            return "\(baseURL)function=\(symbol.rawValue)&apiKey=\(key)&symbol=\(searchKey)"
+            return "\(baseURL)function=\(symbol.rawValue)&apikey=\(key)&symbol=\(searchKey)"
         }
     }
     
@@ -31,6 +31,6 @@ struct StocksAPI {
 
 extension StocksAPI {
     static var key: String {
-        return "VU1ZZCJ4POZ4RQ60"
+        return ""
     }
 }

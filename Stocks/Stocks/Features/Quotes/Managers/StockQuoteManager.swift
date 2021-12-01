@@ -2,12 +2,12 @@ import Foundation
 
 final class StockQuoteManager: QuoteManagerProtocol, ObservableObject {
     @Published var quotes: [Quote] = []
-    
+
     func download(stocks: [String], completion: @escaping (Result<[Quote], NetworkError>) -> Void) {
         var internalQuotes = [Quote]()
         let downloadQueue = DispatchQueue(label: "com.turtle.downloadQueue")
         let downloadGroup = DispatchGroup()
-        
+
         stocks.forEach { (stock) in
             downloadGroup.enter()
             let url = URL(string: StocksAPI.quoteUrl(for: stock))!
@@ -26,7 +26,7 @@ final class StockQuoteManager: QuoteManagerProtocol, ObservableObject {
                 }
             }
         }
-        
+
         downloadGroup.notify(queue: DispatchQueue.global()) {
             completion(.success(internalQuotes))
             DispatchQueue.main.async {
