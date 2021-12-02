@@ -319,3 +319,5 @@ let z: SomeClass = .sharedSubclass
 </pre>
 
 - In the code above, the type of x matches the type implied by its context exactly, the type of y is convertible from SomeClass to SomeClass?, and the type of z is convertible from SomeSubclass to SomeClass.
+
+- https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_implicit-member-expression
