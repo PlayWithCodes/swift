@@ -94,6 +94,27 @@ A protocol defines a blueprint of methods, properties, and other requirements th
 
 
 
+# Structures and Classes
+- In Swift, you define a structure or class in a single file, and the external interface to that class or structure is automatically made available for other code to use.
+
+- Structures and classes in Swift have many things in common. Both can:
+  - Define properties to store values
+  - Define methods to provide functionality
+  - Define subscripts to provide access to their values using subscript syntax
+  - Define initializers to set up their initial state
+  - Be extended to expand their functionality beyond a default implementation
+  - Conform to protocols to provide standard functionality of a certain kind
+
+- Classes have additional capabilities that structures don’t have:
+  - Inheritance enables one class to inherit the characteristics of another.
+  - Type casting enables you to check and interpret the type of a class instance at runtime.
+  - Deinitializers enable an instance of a class to free up any resources it has assigned.
+  - Reference counting allows more than one reference to a class instance.
+
+- https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html
+
+
+
 # Modifying program state
 
 - There’s a saying among SwiftUI developers that our “views are a function of their state,” but while that’s only a handful of words it might be quite meaningless to you at first.
@@ -136,27 +157,129 @@ struct ContentView: View {
 
 - Tip: There are several ways of storing program state in SwiftUI, and you’ll learn all of them. @State is specifically designed for simple properties that are stored in one view. As a result, Apple recommends we add private access control to those properties, like this: @State private var tapCount = 0
 
-
-
 - https://www.hackingwithswift.com/books/ios-swiftui/modifying-program-state
 
 
 
-# Structures and Classes
-- In Swift, you define a structure or class in a single file, and the external interface to that class or structure is automatically made available for other code to use.
+# Binding state to user interface controls
 
-- Structures and classes in Swift have many things in common. Both can:
-  - Define properties to store values
-  - Define methods to provide functionality
-  - Define subscripts to provide access to their values using subscript syntax
-  - Define initializers to set up their initial state
-  - Be extended to expand their functionality beyond a default implementation
-  - Conform to protocols to provide standard functionality of a certain kind
+- In Swift, we mark these two-way bindings with a special symbol so they stand out: we write a dollar sign before them. This tells Swift that it should read the value of the property but also write it back as any changes happen.
 
-- Classes have additional capabilities that structures don’t have:
-  - Inheritance enables one class to inherit the characteristics of another.
-  - Type casting enables you to check and interpret the type of a class instance at runtime.
-  - Deinitializers enable an instance of a class to free up any resources it has assigned.
-  - Reference counting allows more than one reference to a class instance.
+<pre>
+struct ContentView: View {
+    @State private var name = ""
 
-- https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html
+    var body: some View {
+        Form {
+            TextField("Enter your name", text: $name)
+            Text("Hello, world!")
+        }
+    }
+}
+</pre>
+
+- https://www.hackingwithswift.com/books/ios-swiftui/binding-state-to-user-interface-controls
+
+
+
+# Closures
+- Closures can capture and store references to any constants and variables from the context in which they’re defined. This is known as closing over those constants and variables. Swift handles all of the memory management of capturing for you.
+
+- Global and nested functions, as introduced in Functions, are actually special cases of closures. Closures take one of three forms:
+  - Global functions are closures that have a name and don’t capture any values.
+  - Nested functions are closures that have a name and can capture values from their enclosing function.
+  - Closure expressions are unnamed closures written in a lightweight syntax that can capture values from their surrounding context.
+
+- Swift’s closure expressions have a clean, clear style, with optimizations that encourage brief, clutter-free syntax in common scenarios. These optimizations include:
+  - Inferring parameter and return value types from context
+  - Implicit returns from single-expression closures
+  - Shorthand argument names
+  - Trailing closure syntax
+
+- Capturing Values
+  - A closure can capture constants and variables from the surrounding context in which it’s defined. The closure can then refer to and modify the values of those constants and variables from within its body, even if the original scope that defined the constants and variables no longer exists.
+
+
+
+# ForEach
+
+- It’s common to want to create several SwiftUI views inside a loop. For example, we might want to loop over an array of names and have each one be a text view, or loop over an array of menu items and have each one be shown as an image.
+
+- ForEach will run a closure once for every item it loops over, passing in the current loop item. For example, if we looped from 0 to 100 it would pass in 0, then 1, then 2, and so on.
+
+- Because ForEach passes in a closure, we can use shorthand syntax for the parameter name, like this:
+
+<pre>
+Form {
+    ForEach(0 ..< 100) {
+        Text("Row \($0)")
+    }
+}
+</pre>
+
+
+
+# What’s the difference between @ObservedObject, @State, @StateObject, and @EnvironmentObject?
+
+## @State
+- State is inevitable in any modern app, but with SwiftUI it’s important to remember that all of our views are simply functions of their state. We don’t change the views directly, but instead manipulate the state and let that dictate the result.
+
+- The simplest way of working with state is the @State property wrapper, used like this:
+
+<pre>
+struct ContentView: View {
+    @State private var tapCount = 0
+
+    var body: some View {
+        Button("Tap count: \(tapCount)") {
+            tapCount += 1
+        }
+    }
+}
+</pre>
+
+- This creates a property inside a view, but it uses the @State property wrapper to ask SwiftUI to manage the memory. This matters: all our views are structs, which means they can’t be changed, and if we weren’t even able to modify an integer in our apps then there wouldn’t be much we could do.
+
+- So, when we say @State to make a property, we hand control over it to SwiftUI so that it remains persistent in memory for as long as the view exists. When that state changes, SwiftUI knows to automatically reload the view with the latest changes so it can reflect its new information.
+
+- @State is great for simple properties that belong to a specific view and never get used outside that view, so as a result it’s important to mark those properties as being private to re-enforce the idea that such state is specifically designed never to escape its view.
+
+
+## @ObservedObject
+
+- For more complex properties – when you have a custom type you want to use that might have multiple properties and methods, or might be shared across multiple views – you will often use @ObservedObject instead.
+
+- This is very similar to @State except now we’re using an external reference type rather than a simple local property like a string or an integer. You’re still saying that your view depends on data that will change, except now it’s data you’re responsible for managing yourself – you need to create an instance of the class, create its own properties, and so on.
+
+- Whatever type you use with @ObservedObject should conform to the ObservableObject protocol. When you add properties to observable objects you get to decide whether changes to each property should force views that are watching your object to refresh or not. You usually will, but it’s not required.
+
+- There are several ways for an observed object to notify views that important data has changed, but the easiest is using the @Published property wrapper. You can also use custom publishers from the Combine framework if you need more control, but realistically this will be very rare. If the observable object happens to have several views using its data, either option will automatically notify them all.
+
+- Warning: When you use a custom publisher to announce that your object has changed, this must happen on the main thread.
+
+
+## @StateObject
+
+- Somewhere between @State and @ObservedObject lies @StateObject. This is a specialized version of @ObservedObject, and it works in almost exactly the same way: you must conform to the ObservableObject protocol, you can use @Published to mark properties as causing change notifications, and any views that watch an @StateObject will refresh their body when the object changes.
+
+- There is one important difference between @StateObject and @ObservedObject, which is ownership – which view created the object, and which view is just watching it.
+
+- The rule is this: whichever view is the first to create your object must use @StateObject, to tell SwiftUI it is the owner of the data and is responsible for keeping it alive. All other views must use @ObservedObject, to tell SwiftUI they want to watch the object for changes but don’t own it directly.
+
+
+## @EnvironmentObject
+
+- @EnvironmentObject. This is a value that is made available to your views through the application itself – it’s shared data that every view can read if they want to. So, if your app had some important model data that all views needed to read, you could either hand it from view to view to view or just put it into the environment where every view has instant access to it.
+
+- Think of @EnvironmentObject as a massive convenience for times when you need to pass lots of data around your app. Because all views point to the same model, if one view changes the model all views immediately update – there’s no risk of getting different parts of your app out of sync.
+
+
+## Summing up the differences
+
+- Use @State for simple properties that belong to a single view. They should usually be marked private.
+- Use @ObservedObject for complex properties that might belong to several views. Most times you’re using a reference type you should be using @ObservedObject for it.
+- Use @StateObject once for each observable object you use, in whichever part of your code is responsible for creating it.
+- Use @EnvironmentObject for properties that were created elsewhere in the app, such as shared data.
+
+
+- https://www.hackingwithswift.com/quick-start/swiftui/whats-the-difference-between-observedobject-state-and-environmentobject
