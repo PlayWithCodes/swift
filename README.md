@@ -283,3 +283,39 @@ struct ContentView: View {
 
 
 - https://www.hackingwithswift.com/quick-start/swiftui/whats-the-difference-between-observedobject-state-and-environmentobject
+
+
+# Implicit Member Expression
+
+- An implicit member expression is an abbreviated way to access a member of a type, such as an enumeration case or a type method, in a context where type inference can determine the implied type. It has the following form:
+
+<pre>
+var x = MyEnumeration.someValue
+x = .anotherValue
+</pre>
+
+- If the inferred type is an optional, you can also use a member of the non-optional type in an implicit member expression.
+
+<pre>
+var someOptional: MyEnumeration? = .someValue
+</pre>
+
+- Implicit member expressions can be followed by a postfix operator or other postfix syntax listed in Postfix Expressions. This is called a chained implicit member expression. Although it’s common for all of the chained postfix expressions to have the same type, the only requirement is that the whole chained implicit member expression needs to be convertible to the type implied by its context. Specifically, if the implied type is an optional you can use a value of the non-optional type, and if the implied type is a class type you can use a value of one of its subclasses. For example:
+
+<pre>
+class SomeClass {
+    static var shared = SomeClass()
+    static var sharedSubclass = SomeSubclass()
+    var a = AnotherClass()
+}
+class SomeSubclass: SomeClass { }
+class AnotherClass {
+    static var s = SomeClass()
+    func f() -> SomeClass { return AnotherClass.s }
+}
+let x: SomeClass = .shared.a.f()
+let y: SomeClass? = .shared
+let z: SomeClass = .sharedSubclass
+</pre>
+
+- In the code above, the type of x matches the type implied by its context exactly, the type of y is convertible from SomeClass to SomeClass?, and the type of z is convertible from SomeSubclass to SomeClass.
