@@ -1,4 +1,5 @@
 ![StocksApp](https://user-images.githubusercontent.com/91449110/144358987-91d6b713-e9a2-4b0b-9131-b65920327a16.gif)
+- reference: https://www.youtube.com/watch?v=w8o6mp1rRdg
 
 # Swift
 Swift는 macOS, iOS, watchOS, tvOS를 위한 강력하고 직관적인 프로그래밍 언어입니다. Apple WWDC14#에서 공개된 프로그래밍 언어. 기존 Objective-C의 단점을 보완하고, LLVM/Clang[3] 컴파일러로 빌드되는 애플의 신규 프로그래밍 언어이다. 기존 Objective-C에 비해 클로저, 다중 리턴 타입, 네임스페이스, 제네릭, 타입 인터페이스 등 Objective-C에는 없었던 현대 프로그래밍 언어가 갖고 있는 기능을 많이 포함시켰으며, 다음과 같이 코드의 표현력을 높이기 위한 다른 많은 기능을 제공합니다.  
