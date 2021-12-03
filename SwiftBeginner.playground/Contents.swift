@@ -22,17 +22,17 @@ var fahrenheit = celcious * 9 / 5 + 32
 print(celcious, fahrenheit)
 
 let employee = [
-  "name": "Taylor",
-  "age": "25",
-  "location": "Washington"
+    "name": "Taylor",
+    "age": "25",
+    "location": "Washington"
 ]
 
 print(employee["nam", default: "Unknown"])
 
 let olympics = [
-  2012: "London",
-  2016: "Rio de janeiro",
-  2021: "Tokyo"
+    2012: "London",
+    2016: "Rio de janeiro",
+    2021: "Tokyo"
 ]
 
 print(olympics)
@@ -62,7 +62,7 @@ print(actress.contains("Juli"))
 print(actress.sorted())
 
 enum Weekday {
-  case monday, tuesday, wednesday, thursday, friday
+    case monday, tuesday, wednesday, thursday, friday
 }
 
 var day = Weekday.monday
@@ -90,7 +90,7 @@ print(uniqueAlphabet.count)
 var voteAge = 18
 
 if voteAge >= 18 {
-  print("You're eligible to vote")
+    print("You're eligible to vote")
 }
 
 var legalAge = voteAge >= 18 ? "Yes" : "No"
@@ -102,7 +102,7 @@ var bbb = "aa"
 print(aaa < bbb)
 
 enum Weather {
-  case wind, sun, rain, snow, unknown
+    case wind, sun, rain, snow, unknown
 }
 
 var todaysWeather = Weather.sun
@@ -110,7 +110,7 @@ var todaysWeather = Weather.sun
 switch todaysWeather {
 case .wind: print("windy"); fallthrough
 case .sun: print("sunny")
-fallthrough
+    fallthrough
 case .rain: print("rainy")
 case .snow: print("snowy")
 default: print("default")
@@ -119,12 +119,12 @@ default: print("default")
 var platforms = ["ios", "macos", "tvos", "watchos"]
 
 for platform in platforms {
-  print(platform)
+    print(platform)
 }
 
 var lyrics = "Haters gonna "
 for _ in 1...5 {
-  lyrics += "hate "
+    lyrics += "hate "
 }
 
 print(lyrics)
@@ -132,8 +132,8 @@ print(lyrics)
 var countDown = 10
 
 while countDown > 0 {
-  print(countDown)
-  countDown -= 1
+    print(countDown)
+    countDown -= 1
 }
 
 print("Boom!")
@@ -141,17 +141,17 @@ print("Boom!")
 var rolled = 0
 
 while rolled != 20 {
-  rolled = Int.random(in: 1...20)
-  print("I rolled a \(rolled)")
+    rolled = Int.random(in: 1...20)
+    print("I rolled a \(rolled)")
 }
 
 var filenames = ["a.jpg", "b.txt", "c.jpg"]
 
 for filename in filenames {
-  if !filename.hasSuffix(".jpg") {
-    continue
-  }
-  print("found image \(filename)")
+    if !filename.hasSuffix(".jpg") {
+        continue
+    }
+    print("found image \(filename)")
 }
 
 var num1 = 4
@@ -159,27 +159,75 @@ var num2 = 14
 var numArr = [Int]()
 
 for i in 1...100_000 {
-  if i.isMultiple(of: num1) && i.isMultiple(of: num2) {
-    numArr.append(i)
-
-    if numArr.count == 10 {
-      break
+    if i.isMultiple(of: num1) && i.isMultiple(of: num2) {
+        numArr.append(i)
+        
+        if numArr.count == 10 {
+            break
+        }
     }
-  }
 }
 print(numArr)
 
 for i in 1...100 {
-  var result = ""
-
-  if i.isMultiple(of: 3) {
-    result = "Fizz"
-  }
-  if i.isMultiple(of: 5) {
-    result += "Buzz"
-  }
-
-  print(result.isEmpty ? i : result)
+    var result = ""
+    
+    if i.isMultiple(of: 3) {
+        result = "Fizz"
+    }
+    if i.isMultiple(of: 5) {
+        result += "Buzz"
+    }
+    
+    print(result.isEmpty ? i : result)
 }
 
+func printTimesTable(number: Int, end: Int) {
+    for i in 1...end {
+        print("\(number) x \(i) = \(number * i)")
+    }
+}
 
+printTimesTable(number: 5, end: 9)
+
+func rollDice() -> Int {
+    return Int.random(in: 1...6)
+}
+
+print(rollDice())
+
+func areLettersIdentical(str1: String, str2: String) -> Bool {
+    str1.sorted() == str2.sorted()
+}
+
+print(areLettersIdentical(str1: "abc", str2: "bca"))
+
+func phthagoras(a: Double, b: Double) -> Double {
+    sqrt(a*a + b*b)
+}
+
+print(phthagoras(a: 3, b: 4))
+
+func getUser() -> [String] {
+    return ["Taylor", "Swift"]
+}
+
+print(getUser())
+
+func getUser1() -> [String: String] {
+    return ["firstName": "Taylor", "lastName": "Swift"]
+}
+var userDic = getUser1()
+print(userDic["firstName", default: "?"], userDic["lastName", default: "?"])
+
+func getUser3() -> (firstName: String, lastName: String) {
+    return ("Taylor", "Swift")
+}
+
+func getUser4() -> (String, String) {
+    return ("Taylor", "Swift")
+}
+
+let (firstName, lastName) = getUser3()
+print(firstName, lastName)
+print(getUser4().0, getUser4().1)
