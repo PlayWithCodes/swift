@@ -325,3 +325,28 @@ do {
 } catch ParameterRangeError.noRoot {
     print("no root")
 }
+
+let team = ["Gloria", "Suzanne", "Piper", "Tiffany", "Tasha"]
+
+func captainFirstSorted(name1:String, name2:String) -> Bool {
+    if name1 == "Suzanne" {
+        return true
+    }
+    if name2 == "Suzanne" {
+        return false
+    }
+    return name1 < name2
+}
+
+//let captainFirstArr = team.sorted(by: captainFirstSorted)
+
+let captainFirstArr = team.sorted(by: { (name1: String, name2: String) -> Bool in
+    if name1 == "Suzanne" {
+        return true
+    }
+    if name2 == "Suzanne" {
+        return false
+    }
+    return name1 < name2
+})
+print(captainFirstArr)
