@@ -340,13 +340,32 @@ func captainFirstSorted(name1:String, name2:String) -> Bool {
 
 //let captainFirstArr = team.sorted(by: captainFirstSorted)
 
-let captainFirstArr = team.sorted(by: { (name1: String, name2: String) -> Bool in
-    if name1 == "Suzanne" {
+//let captainFirstArr = team.sorted(by: { (name1: String, name2: String) -> Bool in
+//    if name1 == "Suzanne" {
+//        return true
+//    }
+//    if name2 == "Suzanne" {
+//        return false
+//    }
+//    return name1 < name2
+//})
+
+let captainFirstArr = team.sorted{
+    if $0 == "Suzanne" {
         return true
     }
-    if name2 == "Suzanne" {
+    if $1 == "Suzanne" {
         return false
     }
-    return name1 < name2
-})
+    return $0 < $1
+}
+
 print(captainFirstArr)
+
+print(team.sorted{ $0 > $1 })
+
+let tOnly = team.filter{ $0.hasPrefix("T") }
+print(tOnly)
+
+let upperTeam = team.map{ $0.uppercased() }
+print(upperTeam)
