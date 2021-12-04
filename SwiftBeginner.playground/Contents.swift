@@ -230,4 +230,98 @@ func getUser4() -> (String, String) {
 
 let (firstName, lastName) = getUser3()
 print(firstName, lastName)
+
 print(getUser4().0, getUser4().1)
+
+let (oneName, _) = getUser4()
+print(oneName)
+
+func isUppercase(_ string: String) -> Bool {
+    return string == string.uppercased()
+}
+print(isUppercase("UPPER"))
+
+func printTimesTable(for number: Int) {
+    for i in 1...12 {
+        print("\(number) x \(i) = \(number * i)")
+    }
+}
+
+printTimesTable(for: 3)
+
+var characters = ["Lana", "Pam", "Ray"]
+print(characters.count)
+characters.removeAll(keepingCapacity: true)
+print(characters.count)
+print(characters.capacity)
+
+enum PasswordError: Error {
+    case short, obvious
+}
+
+func passwordCheck(_ password: String) throws -> String {
+    let passwordCount = password.count
+    
+    if password == "12345" {
+        throw PasswordError.obvious
+    }
+    
+    if passwordCount < 5 {
+        throw PasswordError.short
+    }
+    
+    if passwordCount < 7 {
+        return "ok"
+    } else if passwordCount < 9 {
+        return "good"
+    } else {
+        return "great"
+    }
+}
+
+do {
+    let result = try passwordCheck("3241234324")
+    print("Password rating: \(result)")
+} catch PasswordError.obvious {
+    print("The password is obvious.")
+} catch PasswordError.short {
+    print("The password is short.")
+} catch {
+    print(error.localizedDescription)
+}
+
+print(try! passwordCheck("r32f2rt42t24twe"))
+
+enum ParameterRangeError: Error {
+    case outOfBounds, noRoot
+}
+
+func getSqrt(_ baseNumber: Int) throws -> Int {
+    if baseNumber < 1 || 10_000 < baseNumber {
+        throw ParameterRangeError.outOfBounds
+    }
+    
+    var sqrtNumber: Int = 0
+    for i in 2...100 {
+        if i * i == baseNumber {
+            sqrtNumber = i
+            break
+        }
+    }
+    
+    if sqrtNumber <= 0 {
+        throw ParameterRangeError.noRoot
+    }
+    
+    return sqrtNumber
+}
+
+do {
+    let baseNumber = 100
+    let result = try getSqrt(baseNumber)
+    print("Sqrt of \(baseNumber) is \(result)")
+} catch ParameterRangeError.outOfBounds {
+    print("out of bound")
+} catch ParameterRangeError.noRoot {
+    print("no root")
+}
