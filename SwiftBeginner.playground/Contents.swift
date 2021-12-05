@@ -1,4 +1,5 @@
 import Cocoa
+import Foundation
 
 let filename = "paris.jpg"
 let star = "⭐️"
@@ -369,3 +370,155 @@ print(tOnly)
 
 let upperTeam = team.map{ $0.uppercased() }
 print(upperTeam)
+
+func rollDice(size: Int, using generator: () -> Int) -> [Int] {
+    var diceResult = [Int]()
+    
+    for _ in 1...size {
+        diceResult.append(generator())
+    }
+    
+    return diceResult
+}
+
+//var diceResult = rollDice(size: 10) {
+//    Int.random(in: 1...20)
+//}
+
+func generator() -> Int {
+    return Int.random(in: 1...20)
+}
+
+var diceResult = rollDice(size: 10, using: generator)
+print(diceResult)
+
+func printThreeTimes(firstPrinter: () -> Void, secondPrinter: () -> Void, thirdPrinter: () -> Void) {
+    firstPrinter()
+    secondPrinter()
+    thirdPrinter()
+}
+
+printThreeTimes {
+    print("first printer")
+} secondPrinter: {
+    print("second printer")
+} thirdPrinter: {
+    print("third printer")
+}
+
+let luckyNumbers = [7,4,38,21,16,15,12,33,31,49]
+
+let luckyStrings = luckyNumbers.filter{ !$0.isMultiple(of: 2) }.sorted{ $0 < $1 }.map{
+    "\($0) is a lucky number"
+}
+
+for string in luckyStrings {
+    print(string)
+}
+
+struct Employee {
+    let name: String = "Pam"
+    var vacationRemaining: Int
+    
+    mutating func takeVacation(days: Int) {
+        if vacationRemaining > days {
+            vacationRemaining -= days
+            print("\(name)'s remaining vacation days \(vacationRemaining)")
+        } else {
+            print("There aren't enough days remaining.")
+        }
+    }
+}
+
+var pam = Employee.init(vacationRemaining: 15)
+//var pam = Employee(vacationRemaining: 15)
+pam.takeVacation(days: 5)
+
+struct Employee2 {
+    var vacationAllocated: Int
+    var vacationTaken: Int
+    
+//    var vacationRemaining: Int {
+//        vacationAllocated - vacationTaken
+//    }
+    
+    var vacationRemaining: Int {
+        get {
+            vacationAllocated - vacationTaken
+        }
+        set {
+            vacationAllocated = vacationTaken + newValue
+        }
+    }
+}
+
+var emp2 = Employee2(vacationAllocated: 30, vacationTaken: 5)
+emp2.vacationRemaining += 5
+print(emp2.vacationRemaining)
+
+struct NumberPrinter {
+    var number: Int = 0 {
+        didSet {
+            print("Current value: \(number)")
+        }
+    }
+}
+
+var numPrinter = NumberPrinter()
+numPrinter.number = 1
+numPrinter.number += 1
+
+struct GamePlayer {
+    var playerArr = [String]() {
+        willSet {
+            print("New player: \(newValue)")
+            print("Current players: \(playerArr)")
+        }
+        didSet {
+            print("Old players: \(oldValue) ")
+            print("Current players: \(playerArr)")
+        }
+    }
+}
+
+var players = GamePlayer()
+players.playerArr.append("p1")
+players.playerArr.append("p2")
+players.playerArr.append("p3")
+
+struct Player{
+    var name: String
+    var age: Int
+    
+    init(name: String) {
+        self.name = name
+        self.age = Int.random(in: 1...30)
+    }
+}
+
+var p1 = Player(name: "p1")
+print(p1.age)
+
+struct BankAccount{
+    private(set) var funds = 0
+    
+    mutating func deposit(amount: Int) {
+        funds += amount
+    }
+    
+    mutating func withdraw(amount: Int) -> Bool {
+        if funds >= amount {
+            funds -= amount
+            return true
+        } else {
+            return false
+        }
+    }
+}
+var myAccount = BankAccount()
+myAccount.deposit(amount: 10000)
+print(myAccount.funds)
+myAccount.withdraw(amount: 5000)
+print(myAccount.funds)
+print(myAccount.withdraw(amount: 10000))
+
