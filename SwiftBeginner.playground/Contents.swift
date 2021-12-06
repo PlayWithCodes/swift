@@ -522,3 +522,93 @@ myAccount.withdraw(amount: 5000)
 print(myAccount.funds)
 print(myAccount.withdraw(amount: 10000))
 
+struct Car{
+    let model: String
+    let seats: Int
+    private(set) var currentGear: Int
+    
+    mutating func shiftGear(gear: Int) {
+        if 1 <= gear && gear <= 10 {
+            currentGear = gear
+        } else {
+            print("Invalid gear")
+        }
+    }
+}
+
+var car1 = Car(model: "A", seats: 5, currentGear: 1)
+print(car1.currentGear)
+car1.shiftGear(gear: 2)
+print(car1.currentGear)
+car1.shiftGear(gear: 11)
+
+class ParentEmployee {
+    var hours: Int
+    
+    init(hours: Int) {
+        self.hours = hours
+    }
+    
+    func printSummary() {
+        print("I work \(hours) a day")
+    }
+}
+
+final class Developer: ParentEmployee {
+    func work() {
+        print("I develop \(hours) a day")
+    }
+    override func printSummary() {
+        print("I work and develop \(hours) a day")
+    }
+}
+
+final class Manager: ParentEmployee {
+    func work() {
+        print("I manage \(hours) a day")
+    }
+}
+
+let dev1 = Developer(hours: 6)
+let mng1 = Manager(hours: 10)
+dev1.work()
+dev1.printSummary()
+mng1.work()
+mng1.printSummary()
+
+class Vehicle {
+    let isElectric: Bool
+    
+    init(isElectric: Bool) {
+        self.isElectric = isElectric
+    }
+}
+
+class Car2: Vehicle {
+    let isConvertible: Bool
+    
+    init(isElectric: Bool, isConvertible: Bool) {
+        self.isConvertible = isConvertible
+        super.init(isElectric: isElectric)
+    }
+}
+
+let teslaX = Car2(isElectric: true, isConvertible: false)
+
+class User {
+    var username = "Anonymous"
+    
+    func copy() -> User {
+        let user = User()
+        user.username = username
+        return user
+    }
+}
+
+let user1 = User()
+let user2 = user1.copy()
+user2.username = "Tom"
+print(user1.username)
+print(user2.username)
+
+
