@@ -612,3 +612,127 @@ print(user1.username)
 print(user2.username)
 
 
+class User2 {
+    let id: Int
+    init(id: Int) {
+        self.id = id
+        print("\(id) is alive!")
+    }
+
+    deinit {
+        print("\(self.id) is dead!")
+    }
+}
+
+var userArr = [User2]()
+for i in 1...3 {
+    userArr.append(User2(id: i))
+    print("\(i) in control!")
+}
+
+print("loop is finished!")
+userArr.removeAll()
+print("array is clear!")
+
+class Animal {
+    let legs: Int
+    init(legs: Int) {
+        self.legs = legs
+    }
+}
+
+class Dog: Animal {
+    func speak() {
+        print("bark!")
+    }
+}
+
+class Corgi: Dog {
+    override func speak() {
+        print("Corgi woff!")
+    }
+}
+
+class Poodle: Dog {
+    override func speak() {
+        print("Poodle bok!!")
+    }
+}
+
+let corgi1 = Corgi(legs: 4)
+corgi1.speak()
+
+let poodle1 = Poodle(legs: 4)
+poodle1.speak()
+
+class Cat: Animal {
+    let isTame: Bool
+    init(legs: Int, isTame: Bool) {
+        self.isTame = isTame
+        super.init(legs: legs)
+    }
+    func speak() {
+        print("meow~")
+    }
+}
+
+class Persian: Cat {
+    override func speak() {
+        print("mow~")
+    }
+}
+
+class Lion: Cat {
+    override func speak() {
+        print("MOW!")
+    }
+}
+
+let persian1 = Persian(legs: 4, isTame: true)
+persian1.speak()
+
+let lion1 = Lion(legs: 4, isTame: false)
+lion1.speak()
+
+protocol VehicleProtocol {
+    func estimateTime(for distance: Int) -> Int
+    func travel(distance: Int)
+}
+
+struct SportCar: VehicleProtocol {
+    func estimateTime(for distance: Int) -> Int {
+        distance / 10
+    }
+    
+    func travel(distance: Int) {
+        print("I'm driving")
+    }
+    
+    func openSunroof() {
+        print("It's a nice day")
+    }
+}
+
+struct Bike: VehicleProtocol {
+    func estimateTime(for distance: Int) -> Int {
+        distance / 2
+    }
+    
+    func travel(distance: Int) {
+        print("I'm cycling")
+    }
+}
+
+func commute(distance: Int, using vehicle: VehicleProtocol) {
+    if vehicle.estimateTime(for: distance) > 100 {
+        print("That's too slow!")
+    } else {
+        vehicle.travel(distance: distance)
+    }
+}
+
+let sportCar = SportCar()
+commute(distance: 10000, using: sportCar)
+
+let bike = Bike()
+commute(distance: 30, using: bike)
