@@ -736,3 +736,13 @@ commute(distance: 10000, using: sportCar)
 
 let bike = Bike()
 commute(distance: 30, using: bike)
+
+func getRandomNumber() -> some Equatable {
+    Int.random(in: 1...5)
+}
+
+//func getRandomNumber() -> some Equatable {
+//    Double.random(in: 1...5)
+//}
+
+print(getRandomNumber() == getRandomNumber())
