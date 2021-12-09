@@ -746,3 +746,218 @@ func getRandomNumber() -> some Equatable {
 //}
 
 print(getRandomNumber() == getRandomNumber())
+
+extension String {
+    func trimmed() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    mutating func trim() {
+        self = self.trimmed()
+    }
+    
+    var lines: [String] {
+        self.components(separatedBy: .newlines)
+    }
+}
+
+var whiteSpacesAndNewLines = """
+   
+      whitespacesAndNewLines
+   
+   
+   """
+
+print(whiteSpacesAndNewLines.trimmed())
+whiteSpacesAndNewLines.trim()
+print(whiteSpacesAndNewLines)
+
+let lyrics2 = """
+But I keep cruising
+Can't stop, won't stop moving
+It's like I got this music in my mind
+Saying it's gonna be alright
+"""
+
+print(lyrics2.lines.count)
+
+struct Book {
+    let title: String
+    let pageCount: Int
+    let readingHours: Int
+}
+
+extension Book {
+    init(title: String, pageCount: Int) {
+        self.title = title
+        self.pageCount = pageCount
+        self.readingHours = pageCount / 10
+    }
+}
+
+var lotr = Book(title: "Lord of the Rings", pageCount: 1234)
+
+extension Collection {
+    var isNotEmpty: Bool {
+        isEmpty == false
+    }
+}
+
+let guests = ["Mario", "Luigi", "Peach"]
+if guests.isNotEmpty {
+    print("Guest count: \(guests.count)")
+}
+
+protocol Person {
+    var name: String { get }
+    func sayHello()
+}
+
+extension Person {
+    func sayHello() {
+        print("Hi, I'm \(name)")
+    }
+}
+
+class Employee3: Person {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+var e1 = Employee3(name: "Taylor Swift")
+e1.sayHello()
+e1.name = "test"
+e1.sayHello()
+
+extension Int {
+    func squared() -> Self {
+        self * self
+    }
+}
+
+var wholeNumber = 3
+print(wholeNumber.squared())
+
+struct User3: Comparable {
+    let name: String
+    
+    static func <(lhs: User3, rhs: User3) -> Bool {
+        lhs.name < rhs.name
+    }
+}
+
+let u1 = User3(name: "e1")
+let u2 = User3(name: "e2")
+print(u1 == u2)
+print(u1 != u2)
+print(u1 <= u2)
+print(u1 > u2)
+
+protocol Building {
+    var rooms: Int { get }
+    var cost: Int { get }
+    var name: String { get }
+}
+
+extension Building {
+    func printSummary() {
+        print("This \(Self.self) has \(rooms) rooms. It costs $\(cost). Contact \(name) for more information.")
+    }
+}
+
+struct House: Building {
+    var rooms: Int
+    
+    var cost: Int
+    
+    var name: String
+}
+
+let house1 = House(rooms: 3, cost: 300_000, name: "Linda")
+house1.printSummary()
+
+struct Office: Building {
+    var rooms: Int
+    
+    var cost: Int
+    
+    var name: String
+}
+
+let office2 = Office(rooms: 10, cost: 1_000_000, name: "Tiffany")
+office2.printSummary()
+
+func squared2(number: Int) -> Int {
+    number * number
+}
+
+var number: Int? = nil
+
+if let number = number {
+    print("The squared number is \(squared2(number: number))")
+} else {
+    print("The number is nil")
+}
+
+func printSquare(number: Int?) {
+    guard let number = number else {
+        print("The number is empty")
+        return
+    }
+    
+    print("\(number) x \(number) = \(number * number)")
+}
+
+printSquare(number: 7)
+
+struct Book1 {
+    let page: Int
+    let author: String?
+}
+
+let lotrBook = Book1(page: 324, author: nil)
+let authorOfLotr = lotrBook.author ?? "Anonymous"
+
+let fruits = [
+    "Apple",
+    "Banana",
+]
+
+let randomFruits = fruits.randomElement() ?? "None"
+
+let nameArr = ["Arya", "Bran", "Robb", "Sansa"]
+let chosen = nameArr.randomElement()?.uppercased() ?? "No one"
+print(chosen)
+
+struct Book4 {
+    let title: String
+    let name: String?
+}
+
+let book4: Book4? = nil
+let author = book4?.name?.first?.uppercased() ?? "nil"
+print(author)
+
+enum UserError: Error {
+    case badId, networkFailed
+}
+
+func getUser(id: Int) throws -> String {
+    throw UserError.badId
+}
+
+if let user = try? getUser(id: 34) {
+    print("getUser(): \(user)")
+}
+
+let user3 = (try? getUser(id: 32)) ?? "Anonymous"
+print(user3)
+
+func rollDice2(dice: [Int]?) -> Int {
+    dice?.randomElement() ?? Int.random(in: 1...100)
+}
+
+let diceNum = rollDice2(dice: [1,2,3,4,5,6])
+print(diceNum)
