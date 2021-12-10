@@ -961,3 +961,63 @@ func rollDice2(dice: [Int]?) -> Int {
 
 let diceNum = rollDice2(dice: [1,2,3,4,5,6])
 print(diceNum)
+
+enum Planet2: Int {
+    case mercury, venus, earth
+}
+
+let planet2 = Planet2(rawValue: 2)
+print(planet2 ?? "None")
+print(planet2?.rawValue ?? "None")
+
+let plusArr = ["a", "b"] + ["c"]
+print(plusArr)
+
+let passingGrade = 70...100
+print(passingGrade)
+print(15 % 10)
+
+var hoursStudied = 0
+var goal = 10
+while hoursStudied < goal {
+    hoursStudied += 1
+    if hoursStudied > 4 {
+        continue
+    }
+    print("I've studied for \(hoursStudied) hours")
+}
+print(hoursStudied)
+
+var inoutTestNum = 5
+func changeParameterValue(testNum: inout Int) {
+    testNum *= 5
+}
+changeParameterValue(testNum: &inoutTestNum)
+print(inoutTestNum)
+
+func tendGarden(activities: () -> Void) {
+    print("I love gardening")
+    activities()
+}
+tendGarden {
+    print("Let's grow some roses!")
+}
+
+func repeatAction(count: Int, action: () -> Void) {
+    for _ in 1...count {
+        action()
+    }
+}
+
+repeatAction(count: 5) {
+    print("Hello World!")
+}
+
+func repeatActionInClosure(then action: (Int) -> Void) {
+    action(5)
+}
+repeatActionInClosure { (count: Int) in
+    for _ in 1...count {
+        print("Hello World!!")
+    }
+}
