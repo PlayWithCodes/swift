@@ -1048,3 +1048,17 @@ let visit = visitPlaces()
 visit("London")
 visit("New York")
 visit("London")
+
+var howManyCharacters = "abcdefghijk"
+print(howManyCharacters.count)
+
+let quote2 = "Time is an illusion"
+print(quote2.contains("illu"))
+
+let numbersArray = [1, 1, 2, 3, 4, 5]
+let sortedNumberArray = numbersArray.sorted()
+print(sortedNumberArray == [1, 2, 3, 4, 5])
+print(sortedNumberArray)
+
+let alphaArray = ["abc", "def", "ghi"]
+print(alphaArray.firstIndex(of: "def") ?? "")
