@@ -1062,3 +1062,27 @@ print(sortedNumberArray)
 
 let alphaArray = ["abc", "def", "ghi"]
 print(alphaArray.firstIndex(of: "def") ?? "")
+
+struct Contributor {
+    private var name = "Paul"
+    private var city: String
+    public var age: Int
+    
+    init(age: Int) {
+        self.age = age
+        city = "Unknown"
+    }
+}
+
+let contributor = Contributor(age: 23)
+
+class ClassCopyTest {
+    var abcArr = [String]()
+}
+
+let class1 = ClassCopyTest()
+let class2 = class1
+class1.abcArr.append("a")
+class2.abcArr.append("b")
+print(class1.abcArr.count)
+print(class2.abcArr.count)
