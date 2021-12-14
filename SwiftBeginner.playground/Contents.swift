@@ -1086,3 +1086,38 @@ class1.abcArr.append("a")
 class2.abcArr.append("b")
 print(class1.abcArr.count)
 print(class2.abcArr.count)
+
+protocol Runnable {
+    var count: Int { get set }
+}
+
+extension Runnable {
+    mutating func run() {
+        print("\(Self.self) run")
+        count += 1
+    }
+}
+
+struct Chicken: Runnable {
+    var count: Int
+}
+
+extension Chicken {
+    func fly() {
+        print("fly")
+    }
+}
+
+var c1 = Chicken(count: 0)
+c1.run()
+c1.run()
+c1.run()
+c1.fly()
+print(c1.count)
+
+let songs = ["abc", "def", "ghi"]
+if let song = songs.firstIndex(of: "def") {
+    print(song)
+} else {
+    print("None")
+}
