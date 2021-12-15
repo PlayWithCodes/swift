@@ -1121,3 +1121,70 @@ if let song = songs.firstIndex(of: "def") {
 } else {
     print("None")
 }
+
+func uppercase(string: String?) -> String? {
+    guard let string = string else {
+        return nil
+    }
+    return string.uppercased()
+}
+
+if let string = uppercase(string: "Hello") {
+    print(string)
+}
+
+func describe(array: [String]?) {
+    let unwrapped = array!
+    print("The array has \(unwrapped.count) items.")
+}
+describe(array: [])
+
+func title(for page: Int) -> String? {
+    guard page >= 1 else {
+        return nil
+    }
+    let pageCount = 132
+    if page < pageCount {
+        return "Page \(page)"
+    } else {
+        return nil
+    }
+}
+let pageTitle = title(for: 16)!
+print(pageTitle)
+
+let distanceRan: Double? = 0.5
+let distance: Double = distanceRan ?? 0
+print(distance)
+
+var appending = alphaArray.first?.appending("first")
+print(alphaArray, appending ?? "nil")
+
+var hasForcePowers = "true"
+let convertedHasForcePowers = Bool(hasForcePowers)
+print(convertedHasForcePowers ?? "none")
+
+struct Website {
+    var url: String
+    init?(url: String) {
+        if url.hasPrefix("http") {
+            self.url = url
+        } else {
+            print("Invalid website URL.")
+            return nil
+        }
+    }
+}
+let site = Website(url: "https://www.hackingwithswift.com")
+print(site ?? "none")
+
+struct DEFCONRating {
+    var number: Int
+    init?(number: Int) {
+        guard number > 0 else { return nil }
+        guard number <= 5 else { return nil }
+        self.number = number
+    }
+}
+let defcon = DEFCONRating(number: 6)
+print(defcon ?? "none")
