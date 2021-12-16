@@ -1188,3 +1188,19 @@ struct DEFCONRating {
 }
 let defcon = DEFCONRating(number: 6)
 print(defcon ?? "none")
+
+class Reading {
+    var value = 0.0
+}
+
+class TemperatureReading: Reading { }
+let temperature = TemperatureReading()
+if let reading = temperature as? Reading {
+    print("The reading is \(reading.value).")
+}
+
+func mowGrass(to height: Double?) {
+    guard let height = height else { return }
+    print("Mowing the grass to \(height).")
+}
+mowGrass(to: 6.0)
