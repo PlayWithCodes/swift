@@ -31,6 +31,6 @@ struct StocksAPI {
 
 extension StocksAPI {
     static var key: String {
-        return ""
+        return "VU1ZZCJ4POZ4RQ60"
     }
 }
