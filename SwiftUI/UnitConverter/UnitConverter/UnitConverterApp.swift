@@ -1,14 +1,14 @@
 //
-//  WeSplitReviewApp.swift
-//  WeSplitReview
+//  UnitConverterApp.swift
+//  UnitConverter
 //
-//  Created by grade8 on 2021/12/18.
+//  Created by grade8 on 2021/12/20.
 //
 
 import SwiftUI
 
 @main
-struct WeSplitReviewApp: App {
+struct UnitConverterApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
