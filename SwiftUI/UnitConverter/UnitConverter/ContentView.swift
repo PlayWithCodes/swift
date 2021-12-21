@@ -5,6 +5,7 @@ struct ContentView: View {
   @State private var unitTo: String = "meters"
   @State private var enteredNumber: Double = 0
   @FocusState private var isFocused: Bool
+  
   private var convertedNumber: Double {
     var result: Double
     
@@ -13,77 +14,45 @@ struct ContentView: View {
       return result
     }
     
-    switch unitFrom {
+    switch unitTo {
       case "meters":
-        switch unitTo {
-          case "kilometers":
-            result = enteredNumber / 1000
-          case "feet":
-            result = enteredNumber * 3.281
-          case "yards":
-            result = enteredNumber * 1.094
-          case "miles":
-            result = enteredNumber / 1609
-          default:
-            result = 0.0
-        }
+        result = unitToMeters
       case "kilometers":
-        switch unitTo {
-          case "meters":
-            result = enteredNumber * 1000
-          case "feet":
-            result = enteredNumber * 3281
-          case "yards":
-            result = enteredNumber * 1094
-          case "miles":
-            result = enteredNumber / 1.609
-          default:
-            result = 0.0
-        }
+        result = unitToMeters / 1000
       case "feet":
-        switch unitTo {
-          case "meters":
-            result = enteredNumber / 3.2181
-          case "kilometers":
-            result = enteredNumber / 3281
-          case "yards":
-            result = enteredNumber * 3
-          case "miles":
-            result = enteredNumber / 5280
-          default:
-            result = 0.0
-        }
+        result = unitToMeters * 3.281
       case "yards":
-        switch unitTo {
-          case "meters":
-            result = enteredNumber / 1.094
-          case "kilometers":
-            result = enteredNumber / 1094
-          case "feet":
-            result = enteredNumber * 3
-          case "miles":
-            result = enteredNumber / 1760
-          default:
-            result = 0.0
-        }
+        result = unitToMeters * 1.094
       case "miles":
-        switch unitTo {
-          case "meters":
-            result = enteredNumber / 1609
-          case "kilometers":
-            result = enteredNumber / 1.609
-          case "feet":
-            result = enteredNumber * 5280
-          case "yards":
-            result = enteredNumber * 1760
-          default:
-            result = 0.0
-        }
+        result = unitToMeters / 1609
       default:
         result = 0.0
     }
+    
     return result
   }
+  
+  private var unitToMeters: Double {
+    var result: Double
+    
+    switch unitFrom {
+      case "meters":
+        result = enteredNumber
+      case "kilometers":
+        result = enteredNumber * 1000
+      case "feet":
+        result = enteredNumber / 3.2181
+      case "yards":
+        result = enteredNumber / 1.094
+      case "miles":
+        result = enteredNumber / 1609
+      default:
+        result = 0.0
+    }
+    
+    return result
+  }
+  
   let units = ["meters", "kilometers", "feet", "yards", "miles"]
   
   var body: some View {
