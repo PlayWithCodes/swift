@@ -6,12 +6,12 @@ struct ContentView: View {
   @State private var enteredNumber: Double = 0
   @FocusState private var isFocused: Bool
   
-  private var convertedNumber: Double {
+  private var convertedNumber: String {
     var result: Double
     
     if unitFrom == unitTo {
       result = enteredNumber
-      return result
+      return result.formatted()
     }
     
     switch unitTo {
@@ -29,7 +29,7 @@ struct ContentView: View {
         result = 0.0
     }
     
-    return result
+    return result.formatted()
   }
   
   private var unitToMeters: Double {
