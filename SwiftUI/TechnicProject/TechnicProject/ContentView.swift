@@ -1,14 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
+  @State private var textColor = false
+  
   var body: some View {
-    VStack {
-      Text("Hello")
-      Text("World")
-      Text("Goodbye")
-      Text("World")
-      // TupleView<(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9)>
+    Button("Hellow, world!") {
+      textColor.toggle()
     }
+    .foregroundColor(textColor ? .red : .blue)
   }
 }
 
