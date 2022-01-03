@@ -2,15 +2,13 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    Button("Hello, world!") {
-      print(type(of: self.body))
-      // ModifiedContent<ModifiedContent<Button<Text>, _BackgroundStyleModifier<Color>>, _FrameLayout>
+    VStack {
+      Text("Hello")
+      Text("World")
+      Text("Goodbye")
+      Text("World")
+      // TupleView<(C0, C1, C2, C3, C4, C5, C6, C7, C8, C9)>
     }
-    .background(.red)
-    .padding()
-    .background(.blue)
-    .padding()
-    .background(.yellow)
   }
 }
 
