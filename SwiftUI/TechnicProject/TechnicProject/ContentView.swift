@@ -1,13 +1,15 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var textColor = false
-  
   var body: some View {
-    Button("Hellow, world!") {
-      textColor.toggle()
+    VStack {
+      Text("Alpha")
+      .font(.largeTitle)
+      Text("Bravo")
+      Text("Charlie")
+      Text("Delta")
     }
-    .foregroundColor(textColor ? .red : .blue)
+    .font(.body)
   }
 }
 
