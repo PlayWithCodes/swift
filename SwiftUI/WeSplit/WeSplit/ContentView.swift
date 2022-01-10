@@ -79,6 +79,7 @@ struct ContentView: View {
         
         Section {
           Text(checkWithTip, format: currencyFormatter)
+            .foregroundColor(selectedTip == 0 ? .red : .blue)
         } header: {
           Text("Total amount")
         }
