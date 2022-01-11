@@ -11,6 +11,20 @@ struct FlagImage: View {
   }
 }
 
+struct Title: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(.largeTitle.bold())
+      .foregroundColor(Color(red: 0.76, green: 0.55, blue: 0.26))
+  }
+}
+
+extension View {
+  func titleStyle() -> some View {
+    modifier(Title())
+  }
+}
+
 struct ContentView: View {
   @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria"].shuffled()
   @State private var correctAnswer = Int.random(in: 0...2)
@@ -31,8 +45,7 @@ struct ContentView: View {
         Spacer()
         
         Text("Guess the flag")
-          .font(.largeTitle.bold())
-          .foregroundColor(Color(red: 0.76, green: 0.55, blue: 0.26))
+          .titleStyle()
         
         VStack(spacing: 15) {
           VStack {
