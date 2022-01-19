@@ -9,7 +9,7 @@ enum RockPaperScissors {
 struct GameMachine {
   static var count = 0
   static var score = 0
-  @State static var gameResult = "Tap a button"
+  static var gameResult = "Tap a button"
   
   static func countUp() {
     count += 1
@@ -45,33 +45,25 @@ struct GameMachine {
     
     switch userChoice {
       case RockPaperScissors.rock:
-        if computerChoice == RockPaperScissors.scissors {
-          gameResult = "You win"
-          GameMachine.scoreUp()
-        } else {
-          gameResult = "You lose"
-          GameMachine.scoreDown()
-        }
+        setGameResult(computerChoice: computerChoice, rpc: RockPaperScissors.scissors)
       case RockPaperScissors.paper:
-        if computerChoice == RockPaperScissors.rock {
-          gameResult = "You win"
-          GameMachine.scoreUp()
-        } else {
-          gameResult = "You lose"
-          GameMachine.scoreDown()
-        }
+        setGameResult(computerChoice: computerChoice, rpc: RockPaperScissors.rock)
       case RockPaperScissors.scissors:
-        if computerChoice == RockPaperScissors.paper {
-          gameResult = "You win"
-          GameMachine.scoreUp()
-        } else {
-          gameResult = "You lose"
-          GameMachine.scoreDown()
-        }
+        setGameResult(computerChoice: computerChoice, rpc: RockPaperScissors.paper)
     }
   }
   
-  static func endGame() -> Bool {
+  static func setGameResult(computerChoice: RockPaperScissors, rpc: RockPaperScissors) {
+    if computerChoice == rpc {
+      gameResult = "You win"
+      GameMachine.scoreUp()
+    } else {
+      gameResult = "You lose"
+      GameMachine.scoreDown()
+    }
+  }
+  
+  static func isGameEnded() -> Bool {
     return count == 10 ? true : false
   }
   
@@ -89,7 +81,7 @@ struct RpcButton: View {
   var body: some View {
     Button(buttonName) {
       GameMachine.runRpc(userChoice: userChoice)
-      showingAlert = GameMachine.endGame()
+      showingAlert = GameMachine.isGameEnded()
     }
     .padding()
     .background(.blue)
