@@ -4,9 +4,9 @@ struct ContentView: View {
   @State private var wakeUp = Date.now
   
   var body: some View {
-    DatePicker("Please enter a time", selection: $wakeUp, in: Date.now...)
-    //DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
-      //.labelsHidden()
+    //Text(Date.now, format: .dateTime.day().month().year())
+    //Text(Date.now.formatted(date: .long, time: .shortened))
+    Text(Date.now.formatted(date: .long, time: .omitted))
   }
 }
 
