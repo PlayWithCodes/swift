@@ -6,8 +6,10 @@ struct ContentView: View {
   @State private var sleepAmount = 8.0
   @State private var coffeeAmount = 1
   
-  @State private var alertTitle = ""
-  @State private var alertMessage = ""
+  private var idealBedtime: String {
+    calculateBedTime()
+  }
+  
   @State private var showingAlert = false
   
   var body: some View {
@@ -38,20 +40,26 @@ struct ContentView: View {
           Text("Daily coffee intake")
             .font(.headline)
         }
+        
+        VStack {
+          Text("Recommended bedtime")
+            .font(.title.weight(.semibold))
+          
+          Spacer()
+          Spacer()
+          
+          Text("\(idealBedtime)")
+            .font(.largeTitle)
+            .foregroundColor(.blue)
+        }
       }
       .navigationTitle("BetterRest")
-      .toolbar {
-        Button("Calculate", action: calculateBedTime)
-      }
-      .alert(alertTitle, isPresented: $showingAlert) {
-        Button("OK") {}
-      } message: {
-        Text(alertMessage)
-      }
     }
   }
   
-  func calculateBedTime() {
+  func calculateBedTime() -> String {
+    var idealBedTime = ""
+    
     do {
       let config = MLModelConfiguration()
       let model = try SleepCalculator(configuration: config)
@@ -63,14 +71,12 @@ struct ContentView: View {
       let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount))
       
       let sleepTime = wakeUp - prediction.actualSleep
-      alertTitle = "Your ideal bedtime is..."
-      alertMessage = sleepTime.formatted(date: .omitted, time: .shortened)
+      idealBedTime = sleepTime.formatted(date: .omitted, time: .shortened)
     } catch {
-      alertTitle = "Error"
-      alertMessage = "Sorry, there was a problem calculating your bedtime."
+      idealBedTime = "Sorry, there was a problem calculating your bedtime."
     }
     
-    showingAlert = true
+    return idealBedTime
   }
 }
 
